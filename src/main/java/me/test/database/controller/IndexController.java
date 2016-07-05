@@ -17,6 +17,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import me.test.database.mapper.NetElementDeviceMapper;
+
 /** 
 * @ClassName: IndexController 
 * @Description: TODO(这里用一句话描述这个类的作用) 
@@ -31,9 +33,20 @@ public class IndexController {
 	@Qualifier("esJdbcTemplate")
 	private JdbcTemplate esJdbcTemplate;
 	
+	@Autowired
+	private NetElementDeviceMapper netElementDeviceMapper;
+	
 	@RequestMapping("/web")
 	public String getcount(Map<String, Object> model){
 		int rs = esJdbcTemplate.queryForObject("select count(0) from NET_ELEMENT_DEVICE", Integer.class);
+		model.put("num", rs);
+		return "/index";
+	}
+	
+	@RequestMapping("/web/mybatis")
+	public String getCount(Map<String, Object> model){
+		
+		int rs = netElementDeviceMapper.selectCount();
 		model.put("num", rs);
 		return "/index";
 	}

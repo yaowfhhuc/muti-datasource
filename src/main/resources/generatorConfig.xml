@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<classPathEntry
+		location="D:\greensoft\instantclient_11_2\ojdbc6.jar" />
+	<context id="context1">
+		<commentGenerator>
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+			<property name="forceBigDecimals" value="false" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+			connectionURL="jdbc:oracle:thin:@10.40.93.53:41111/bigg" userId="jsjk"
+			password="jsjk123" />
+		<javaModelGenerator targetPackage="me.test.database.model"
+			targetProject="database\src\main\java" />
+		<sqlMapGenerator targetPackage="me.test.database.mapper"
+			targetProject="database\src\main\java" />
+		<javaClientGenerator targetPackage="me.test.database.mapper"
+			targetProject="database\src\main\java" type="XMLMAPPER" />
+		<table schema="JSJK" tableName="NET_ELEMENT_DEVICE"
+			domainObjectName="NetElementDevice" enableCountByExample="false" enableUpdateByExample="false"	enableDeleteByExample="false" enableSelectByExample="false"	selectByExampleQueryId="false"/>
+	</context>
+</generatorConfiguration>

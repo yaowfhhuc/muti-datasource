@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.test.database.mapper.NetElementDeviceMapper" >
+  <resultMap id="BaseResultMap" type="me.test.database.model.NetElementDevice" >
+    <result column="EMULATE_DEVICE" property="emulateDevice" jdbcType="VARCHAR" />
+    <result column="TIMESTAMP" property="timestamp" jdbcType="TIMESTAMP" />
+    <result column="START_TIME" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="END_TIME" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="INTERFACE_NAME" property="interfaceName" jdbcType="VARCHAR" />
+    <result column="NET_ELEMENT_NAME" property="netElementName" jdbcType="VARCHAR" />
+    <result column="APN_NAME" property="apnName" jdbcType="VARCHAR" />
+    <result column="MAX_DELAY" property="maxDelay" jdbcType="DECIMAL" />
+    <result column="MIN_DELAY" property="minDelay" jdbcType="DECIMAL" />
+    <result column="AVG_DELAY" property="avgDelay" jdbcType="DECIMAL" />
+    <result column="LOSS_RATE" property="lossRate" jdbcType="DECIMAL" />
+    <result column="INT_ID" property="intId" jdbcType="DECIMAL" />
+  </resultMap>
+  <select id="selectCount" resultType="java.lang.Integer">
+  	select count(0) from NET_ELEMENT_DEVICE
+  </select>
+  <insert id="insert" parameterType="me.test.database.model.NetElementDevice" >
+    insert into JSJK.NET_ELEMENT_DEVICE (EMULATE_DEVICE, TIMESTAMP, START_TIME, 
+      END_TIME, INTERFACE_NAME, NET_ELEMENT_NAME, 
+      APN_NAME, MAX_DELAY, MIN_DELAY, 
+      AVG_DELAY, LOSS_RATE, INT_ID
+      )
+    values (#{emulateDevice,jdbcType=VARCHAR}, #{timestamp,jdbcType=TIMESTAMP}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{interfaceName,jdbcType=VARCHAR}, #{netElementName,jdbcType=VARCHAR}, 
+      #{apnName,jdbcType=VARCHAR}, #{maxDelay,jdbcType=DECIMAL}, #{minDelay,jdbcType=DECIMAL}, 
+      #{avgDelay,jdbcType=DECIMAL}, #{lossRate,jdbcType=DECIMAL}, #{intId,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="me.test.database.model.NetElementDevice" >
+    insert into JSJK.NET_ELEMENT_DEVICE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="emulateDevice != null" >
+        EMULATE_DEVICE,
+      </if>
+      <if test="timestamp != null" >
+        TIMESTAMP,
+      </if>
+      <if test="startTime != null" >
+        START_TIME,
+      </if>
+      <if test="endTime != null" >
+        END_TIME,
+      </if>
+      <if test="interfaceName != null" >
+        INTERFACE_NAME,
+      </if>
+      <if test="netElementName != null" >
+        NET_ELEMENT_NAME,
+      </if>
+      <if test="apnName != null" >
+        APN_NAME,
+      </if>
+      <if test="maxDelay != null" >
+        MAX_DELAY,
+      </if>
+      <if test="minDelay != null" >
+        MIN_DELAY,
+      </if>
+      <if test="avgDelay != null" >
+        AVG_DELAY,
+      </if>
+      <if test="lossRate != null" >
+        LOSS_RATE,
+      </if>
+      <if test="intId != null" >
+        INT_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="emulateDevice != null" >
+        #{emulateDevice,jdbcType=VARCHAR},
+      </if>
+      <if test="timestamp != null" >
+        #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="interfaceName != null" >
+        #{interfaceName,jdbcType=VARCHAR},
+      </if>
+      <if test="netElementName != null" >
+        #{netElementName,jdbcType=VARCHAR},
+      </if>
+      <if test="apnName != null" >
+        #{apnName,jdbcType=VARCHAR},
+      </if>
+      <if test="maxDelay != null" >
+        #{maxDelay,jdbcType=DECIMAL},
+      </if>
+      <if test="minDelay != null" >
+        #{minDelay,jdbcType=DECIMAL},
+      </if>
+      <if test="avgDelay != null" >
+        #{avgDelay,jdbcType=DECIMAL},
+      </if>
+      <if test="lossRate != null" >
+        #{lossRate,jdbcType=DECIMAL},
+      </if>
+      <if test="intId != null" >
+        #{intId,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>

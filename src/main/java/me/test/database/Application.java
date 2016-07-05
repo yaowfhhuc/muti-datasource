@@ -15,7 +15,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 @SpringBootApplication
 public class Application {
 	
-	@Bean(name="esDatasource")
+	@Bean(name="esDataSource")
 	@Primary
 	@Qualifier("esDataSource")
 	@ConfigurationProperties(prefix="spring.datasource.easysight")
@@ -23,7 +23,7 @@ public class Application {
 		return DataSourceBuilder.create().build();
 	}
 	
-	@Bean(name="zgDatasource")
+	@Bean(name="zgDataSource")
 	@Qualifier("zgDataSource")
 	@ConfigurationProperties(prefix="spring.datasource.ziguan")
 	public DataSource secondDataSource(){
