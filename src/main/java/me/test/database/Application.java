@@ -11,9 +11,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import me.test.database.interceptor.SessionInterceptor;
 
 @SpringBootApplication
-public class Application {
+public class Application extends WebMvcConfigurerAdapter{
 	
 	@Bean(name="esDataSource")
 	@Primary
@@ -42,6 +46,10 @@ public class Application {
 		return zgJdbcTemplate;
 	}
 
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new SessionInterceptor()).addPathPatterns("/**").excludePathPatterns("/web/mybatis");
+	}
 	
 	public static void main(String[] args) {
 		ApplicationContext context =SpringApplication.run(Application.class, args);

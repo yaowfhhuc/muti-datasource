@@ -8,5 +8,6 @@
 </head>
 <body>
 <div>${num}</div>
+<div>${num}</div>
 </body>
 </html>
