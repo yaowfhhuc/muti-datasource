@@ -17,5 +17,5 @@ package me.test.database.util;
 */
 public class Constant {
 
-	public static String HTTP_HEADER_SESSIONOUT = "HTTP_HEADER_SESSIONOUT";
+	public static String HTTP_HEADER_SESSIONOUT = "sessionOut";
 }

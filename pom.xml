@@ -5,7 +5,7 @@
 	<groupId>me.test</groupId>
 	<artifactId>database</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -20,8 +20,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<logback.version>1.1.2</logback.version>
 		<mybatis.version>3.2.0</mybatis.version>
- 		<mybatis.spring.boot>1.0.0</mybatis.spring.boot>
- 		<pagehelper.version>4.1.4</pagehelper.version>
+		<mybatis.spring.boot>1.0.0</mybatis.spring.boot>
+		<pagehelper.version>4.1.4</pagehelper.version>
 	</properties>
 
 	<repositories>
@@ -124,6 +124,14 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!-- <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin> -->
 		</plugins>
 	</build>
 </project>

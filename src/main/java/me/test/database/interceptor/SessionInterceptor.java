@@ -46,7 +46,7 @@ public class SessionInterceptor implements HandlerInterceptor{
 					|| request.getParameter("ajax") != null) {//异步请求
 				response.setHeader(Constant.HTTP_HEADER_SESSIONOUT, "true");
 			} else {//同步请求
-				response.sendRedirect("/web/mybatis");
+				response.sendRedirect("/");
 			}
 			return false;
 		}else{

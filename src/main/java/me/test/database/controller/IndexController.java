@@ -36,7 +36,7 @@ public class IndexController {
 	@Autowired
 	private NetElementDeviceMapper netElementDeviceMapper;
 	
-	@RequestMapping("/web")
+	@RequestMapping("/web/jdbc")
 	public String getcount(Map<String, Object> model){
 		int rs = esJdbcTemplate.queryForObject("select count(0) from NET_ELEMENT_DEVICE", Integer.class);
 		model.put("num", rs);

@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
@@ -18,6 +20,8 @@ import me.test.database.interceptor.SessionInterceptor;
 
 @SpringBootApplication
 public class Application extends WebMvcConfigurerAdapter{
+	
+	private static Class<Application> appClass = Application.class;
 	
 	@Bean(name="esDataSource")
 	@Primary
@@ -48,13 +52,21 @@ public class Application extends WebMvcConfigurerAdapter{
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new SessionInterceptor()).addPathPatterns("/**").excludePathPatterns("/web/mybatis");
+		registry.addInterceptor(new SessionInterceptor()).addPathPatterns("/**").excludePathPatterns("/");
 	}
 	
 	public static void main(String[] args) {
-		ApplicationContext context =SpringApplication.run(Application.class, args);
+		ApplicationContext context =SpringApplication.run(appClass, args);
 		for(String name :context.getBeanDefinitionNames()){
 			System.out.println(name);
 		}
 	}
+	//tomcat支持
+	public static class ServleInit extends SpringBootServletInitializer{
+		@Override
+		public SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+			return application.sources(appClass);
+		}
+	}
+	
 }
